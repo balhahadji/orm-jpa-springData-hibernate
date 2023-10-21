@@ -11,7 +11,9 @@ import java.util.Date;
 import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
-    public List<Patient> findByMalade(boolean m);
+    Patient findByNom(String nom);
+
+   /* public List<Patient> findByMalade(boolean m);
 
     Page<Patient> findByMalade(boolean m, Pageable pageable);
 
@@ -19,9 +21,9 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     List<Patient> findByMaladeIsTrueAndScoreLessThan(int sore);
 
-    List<Patient> findByDateNaissanceBetweenAndMaladeIsTrueOrNom(Date d1, Date d2, String mc);
+    List<Patient> findByDateNaissanceBetweenAndMaladeIsTrueOrNom(Date d1, Date d2, String mc);*/
 
-    @Query("select p from Patient p where p.nom like :x and p.score< :y")
-    List<Patient> chercherPatients(@Param("x") String nom, @Param("y") int scoreMin);
+    /*@Query("select p from Patient p where p.nom like :x and p.score< :y")
+    List<Patient> chercherPatients(@Param("x") String nom, @Param("y") int scoreMin);*/
 
 }

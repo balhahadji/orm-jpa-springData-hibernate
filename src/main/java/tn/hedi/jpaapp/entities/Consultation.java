@@ -6,22 +6,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Patient {
+@NoArgsConstructor
+public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 50)
-    private String nom;
-    @Temporal(TemporalType.DATE)
-    private Date dateNaissance;
-    private boolean malade;
-    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
-    private Collection<RendezVous> rendezVousCollection;
+    private Date dateConsultation;
+    private String rapport;
+    @OneToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private RendezVous rendezVous;
+
+
 }
